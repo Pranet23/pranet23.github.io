@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pranet Chirag Talati | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .dark {
+            color-scheme: dark;
+        }
+        body.dark {
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+        body:not(.dark) {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        /* Radial Gradient Spotlight – behind content, follows cursor */
+        #spotlight {
+            position: fixed;
+            width: 120vmax;
+            height: 120vmax;
+            left: 0;
+            top: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        #spotlight.visible {
+            opacity: 1;
+        }
+        /* Light mode: soft dark glow at cursor (contrasts light bg) */
+        html:not(.dark) #spotlight {
+            background: radial-gradient(circle 28vmin at 50% 50%, transparent 0%, rgba(0,0,0,0.05) 35%, transparent 70%);
+        }
+        /* Dark mode: soft light glow at cursor (contrasts dark bg) */
+        html.dark #spotlight {
+            background: radial-gradient(circle 28vmin at 50% 50%, transparent 0%, rgba(255,255,255,0.07) 35%, transparent 70%);
+        }
+        .section-wrap {
+            position: relative;
+            z-index: 1;
+        }
+        .sketch {
+            position: absolute;
+            opacity: 0.06;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.2;
+        }
+        html.dark .sketch { opacity: 0.08; }
+    </style>
+</head>
+    <body class="bg-white dark:bg-[#0a0a0a] text-black dark:text-white transition-colors duration-300">
+    <div id="spotlight" aria-hidden="true"></div>
+    <!-- Sticky Floating Navbar -->
+    <nav class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-4xl">
+        <div class="bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md rounded-full px-6 py-3 shadow-lg border border-black/10 dark:border-white/10">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#hero" class="text-lg font-bold tracking-tight">Pranet Chirag Talati</a>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#about" class="text-sm font-medium hover:opacity-70 transition-opacity">About</a>
+                    <a href="#work" class="text-sm font-medium hover:opacity-70 transition-opacity">Work</a>
+                    <a href="#skills" class="text-sm font-medium hover:opacity-70 transition-opacity">Skills</a>
+                    <a href="#projects" class="text-sm font-medium hover:opacity-70 transition-opacity">Projects</a>
+                    <a href="#contact" class="text-sm font-medium hover:opacity-70 transition-opacity">Contact</a>
+                </div>
+                
+                <!-- Right Side: Dark Mode Toggle + Social Icons -->
+                <div class="flex items-center gap-4">
+                    <!-- Dark Mode Toggle -->
+                    <button id="darkModeToggle" class="p-2 hover:opacity-70 transition-opacity" aria-label="Toggle dark mode">
+                        <i class="fas fa-sun text-lg" id="sunIcon"></i>
+                        <i class="fas fa-moon text-lg hidden" id="moonIcon"></i>
+                    </button>
+                    
+                    <!-- Social Icons -->
+                    <a href="https://github.com/Pranet23" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-70 transition-opacity" title="GitHub">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/pranettalati" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-70 transition-opacity" title="LinkedIn">
+                        <i class="fab fa-linkedin text-lg"></i>
+                    </a>
+                    <a href="https://unsplash.com/@pranet_23" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-70 transition-opacity" title="Unsplash">
+                        <i class="fa-solid fa-camera text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex flex-col items-center justify-center px-6 py-20 text-center relative overflow-hidden">
+        <svg class="sketch w-20 h-20 top-12 right-10 md:right-16 rotate-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 12h2M18 12h2M8 12c0 0 1.5-2 4-2s4 2 4 2" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+        <div class="relative z-10">
+            <h1 class="text-6xl md:text-8xl font-black tracking-tight mb-6">Pranet Chirag Talati</h1>
+            <p class="text-xl md:text-2xl font-medium mb-4">Electrical Engineering Student | Event Manager | Photographer</p>
+            <p class="text-base md:text-lg max-w-2xl mx-auto mb-2 opacity-80 text-center">Based in Toronto. Combining technical acumen with human-centered leadership. Focused on Hardware systems, Circuits, and Sustainable Tech.</p>
+            <p class="text-sm md:text-base font-semibold mb-8 opacity-70 text-center">Actively Seeking Internships</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#projects" class="bg-black text-white dark:bg-white dark:text-black px-8 py-3 rounded-lg font-semibold hover:opacity-80 transition-opacity">
+                    View Projects
+                </a>
+                <a href="pranet-resume.pdf" download class="bg-white text-black dark:bg-black dark:text-white border-2 border-black dark:border-white px-8 py-3 rounded-lg font-semibold hover:opacity-80 transition-opacity">
+                    Download Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative overflow-hidden">
+        <!-- Edge sketch: circuit -->
+        <svg class="sketch w-20 h-20 top-8 right-8 md:top-12 md:right-12" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 8h4v2H4v4h4v2H4M10 8h4v8h-4v-8M16 8h4v2h-4v4h4v2h-4" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+        <div class="max-w-3xl relative z-10">
+            <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-8">My Story</h2>
+            <p class="text-lg md:text-xl leading-relaxed opacity-90 mb-6">
+                I grew up in Bangalore's electric diversity where people from every corner of India collided daily. That's where I became a natural communicator, effortlessly connecting across backgrounds. Leadership is never a role that I chase; it's how I'm wired.
+            </p>
+            <p class="text-lg md:text-xl leading-relaxed opacity-90 mb-6">
+                At 18, I left that vibrant world for Toronto's engineering frontier. Now as a first-year TMU electrical engineering student, I'm diving deep into hardware—clean energy systems, semiconductors and circuits—while staying true to my people-first core.
+            </p>
+            <p class="text-lg md:text-xl leading-relaxed opacity-90">
+                Surrounded by individuals my whole life, I thrive in leading diverse teams through chaos. From Bangalore's crossroads to TMU's labs, I bring genuine care and a natural command.
+            </p>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills" class="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative overflow-hidden">
+        <svg class="sketch w-16 h-16 top-16 left-12 rotate-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 4v16M16 4v16M4 8h4M4 16h4M16 8h4M16 16h4" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+        <div class="max-w-4xl w-full relative z-10">
+            <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-12 text-center">Technical Skills</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="border border-black/10 dark:border-white/10 rounded-xl p-6">
+                    <h3 class="text-sm font-bold uppercase tracking-wider mb-4 opacity-70">Computer Aided Design</h3>
+                    <p class="text-base opacity-90">KiCad (PCB design, schematic capture, layout)</p>
+                </div>
+                <div class="border border-black/10 dark:border-white/10 rounded-xl p-6">
+                    <h3 class="text-sm font-bold uppercase tracking-wider mb-4 opacity-70">Programming</h3>
+                    <p class="text-base opacity-90">C++, Python, MATLAB</p>
+                </div>
+                <div class="border border-black/10 dark:border-white/10 rounded-xl p-6">
+                    <h3 class="text-sm font-bold uppercase tracking-wider mb-4 opacity-70">Fabrication</h3>
+                    <p class="text-base opacity-90">Soldering, 3D Printing</p>
+                </div>
+                <div class="border border-black/10 dark:border-white/10 rounded-xl p-6">
+                    <h3 class="text-sm font-bold uppercase tracking-wider mb-4 opacity-70">Circuit Analysis</h3>
+                    <p class="text-base opacity-90">Circuit analysis and connections</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work/Experience Section -->
+    <section id="work" class="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative overflow-hidden">
+        <!-- Edge sketch: calendar / event -->
+        <svg class="sketch w-16 h-16 bottom-12 left-6 -rotate-12" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="4" width="18" height="18" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"/>
+            <path d="M3 10h18M8 2v4M16 2v4" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+        <!-- Edge sketch: people -->
+        <svg class="sketch w-14 h-14 top-20 left-10 rotate-[-6deg]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="9" cy="7" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none"/>
+            <circle cx="15" cy="7" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none"/>
+            <path d="M5 18c0-2.2 1.8-4 4-4s4 1.8 4 4M13 18c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+        <div class="max-w-4xl w-full relative z-10">
+            <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-12">Journey</h2>
+            <div class="space-y-8">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 pb-8 border-b border-black/10 dark:border-white/10">
+                    <div class="font-bold text-lg">Pizza Pizza</div>
+                    <div class="md:text-right md:max-w-[65%]">
+                        <div class="font-semibold mb-1">Cashier & Cook</div>
+                        <div class="text-sm opacity-70 mb-2">Aug 2025 – Jan 2026</div>
+                        <div class="text-sm opacity-80">Made pizzas, took orders on POS system, managed high-volume orders, cash records, and inventory organization. Handled customer service and maintained cleanliness standards. (Ref: Mr. Chirag Shah)</div>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 pb-8 border-b border-black/10 dark:border-white/10">
+                    <div class="font-bold text-lg">MUES (Metropolitan Undergraduate Engineering Society)</div>
+                    <div class="md:text-right md:max-w-[65%]">
+                        <div class="font-semibold mb-1">Event Crew & Volunteer</div>
+                        <div class="text-sm opacity-70 mb-2">Sept 2025 – Present</div>
+                        <div class="text-sm opacity-80">Selected for the event management team at TMU's engineering society. Volunteer and support campus engineering events; contribute to planning, logistics, and execution. Formal recognition as "Event crew @MUES committee TMU" award recipient.</div>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 pb-8 border-b border-black/10 dark:border-white/10">
+                    <div class="font-bold text-lg">CSA Summit</div>
+                    <div class="md:text-right md:max-w-[65%]">
+                        <div class="font-semibold mb-1">Senior Event Operations Volunteer</div>
+                        <div class="text-sm opacity-70 mb-2">Dec 2023 · Bangalore</div>
+                        <div class="text-sm opacity-80">Managed room logistics and professional photography for 600+ delegates and 100+ CXOs at India's largest cloud security event. Coordinated participant flow, seating, and technical requirements; captured sessions and documented key moments. Interacted with C-level executives while maintaining composure.</div>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 pb-8 border-b border-black/10 dark:border-white/10">
+                    <div class="font-bold text-lg">CSA Bangalore Chapter</div>
+                    <div class="md:text-right md:max-w-[65%]">
+                        <div class="font-semibold mb-1">Photographer & Volunteer</div>
+                        <div class="text-sm opacity-70 mb-2">Oct 2023 · Bangalore</div>
+                        <div class="text-sm opacity-80">First corporate experience. Documented quarterly meet with professional-grade photography; supported event execution and participant coordination. Certificate of volunteering.</div>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                    <div class="font-bold text-lg">Delhi Public School</div>
+                    <div class="md:text-right md:max-w-[65%]">
+                        <div class="font-semibold mb-1">President, Discipline Committee · Lead Photographer</div>
+                        <div class="text-sm opacity-70 mb-2">2023–2024 · Bangalore</div>
+                        <div class="text-sm opacity-80">Elected leadership role on student council; managed peer oversight and discipline. Led photography teams (3+ members) at DECMUN, Shrishti, swim meets. 91.8% in Grade 10. Multiple interschool sports wins; Swachh Bharat participation.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section - Zig-Zag Layout -->
+    <section id="projects" class="min-h-screen py-20 px-6 relative overflow-hidden">
+        <!-- Edge sketch: camera -->
+        <svg class="sketch w-16 h-16 top-24 right-8 rotate-12" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="6" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.2" fill="none"/>
+            <circle cx="12" cy="13" r="4" stroke="currentColor" stroke-width="1.2" fill="none"/>
+            <path d="M16 6l2-2h2v2" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+        <!-- Edge sketch: resistor/circuit -->
+        <svg class="sketch w-14 h-14 bottom-32 left-10 -rotate-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 12h3M17 12h3M7 12c0 0 2-2 4-2s4 2 4 2" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+        <div class="max-w-6xl mx-auto relative z-10">
+            <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-16 text-center">Projects</h2>
+            
+            <!-- Row 1: Robot (Image Left, Text Right) -->
+            <div class="flex flex-col md:flex-row items-center gap-8 mb-20">
+                <div class="w-full md:w-1/2">
+                    <img src="robot.jpeg" alt="Autonomous Track Sensing Robot" class="w-full h-[400px] object-cover rounded-lg">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-3xl font-bold mb-4">Autonomous Track Sensing Robot</h3>
+                    <p class="text-sm font-semibold mb-4 opacity-70">C++, Arduino · IR sensors, DC motors, feedback control</p>
+                    <p class="text-base leading-relaxed opacity-90 mb-3">
+                        Self-driving robot using PID-style control: Arduino Uno reads IR/LED sensors, runs decision logic, and drives dual DC motors via PWM. Calibrated sensors to distinguish track from noise; implemented navigation for sharp turns. Analog-to-digital conversion, conditional logic, and real-time processing. Reliable 90%+ track-following accuracy.
+                    </p>
+                    <p class="text-sm opacity-70">TMU · Nov 2025</p>
+                </div>
+            </div>
+
+            <!-- Row 2: Macropad (Text Left, Image Right) -->
+            <div class="flex flex-col md:flex-row-reverse items-center gap-8 mb-20">
+                <div class="w-full md:w-1/2">
+                    <img src="macropad.jpeg" alt="Custom Mechanical Macropad" class="w-full h-[400px] object-cover rounded-lg">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-3xl font-bold mb-4">Custom Mechanical Macropad</h3>
+                    <p class="text-sm font-semibold mb-4 opacity-70">KiCad, PCB design, 3D printing, firmware</p>
+                    <p class="text-base leading-relaxed opacity-90 mb-3">
+                        Full hardware product: custom PCB in KiCad, hand-wired switch matrix, 3D-printed case. Wrote firmware for key scanning and matrix readout. End-to-end design from schematic to enclosure.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Row 3: USB Display (Text Left, Image Right) -->
+            <div class="flex flex-col md:flex-row-reverse items-center gap-8 mb-20">
+                <div class="w-full md:w-1/2">
+                    <img src="usb.jpeg" alt="USB LED Display" class="w-full h-[400px] object-cover rounded-lg">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-3xl font-bold mb-4">USB LED Display</h3>
+                    <p class="text-sm font-semibold mb-4 opacity-70">Electronics, soldering, Ohm's Law</p>
+                    <p class="text-base leading-relaxed opacity-90 mb-3">
+                        Mini USB dongle that lights up when plugged in—powered solely from the port's 5V. LEDs in series with current-limiting resistors; values from R = (V_source − V_LED) / I. Soldered assembly, no external supply. Practical application of power management and creative reuse of USB.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Row 4: Photography (Image Left, Text Right) -->
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="w-full md:w-1/2">
+                    <img src="photo.jpg" alt="Photography Portfolio" class="w-full h-[400px] object-cover rounded-lg">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-3xl font-bold mb-4">Photography Portfolio</h3>
+                    <p class="text-sm font-semibold mb-4 opacity-70">Unsplash · Lightroom · Event & urban</p>
+                    <p class="text-base leading-relaxed opacity-90 mb-3">
+                        Top 25% on Unsplash with more than 170k+ views and thousands of downloads. Landscape, urban architecture, and event coverage. Combines technical composition with human-centered storytelling; used in marketing and design.
+                    </p>
+                    <a href="https://unsplash.com/@pranet_23" target="_blank" rel="noopener noreferrer" class="text-sm font-medium opacity-70 hover:opacity-100 transition-opacity">View on Unsplash →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Footer Section -->
+    <section id="contact" class="min-h-screen flex flex-col items-center justify-center px-6 py-20 text-center relative overflow-hidden">
+        <svg class="sketch w-14 h-14 bottom-24 right-16 -rotate-12" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4v4M12 16v4M4 12h4M16 12h4" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+        <div class="max-w-2xl relative z-10">
+            <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-8">Let's Connect.</h2>
+            <p class="text-lg md:text-xl mb-6 opacity-90">
+                <a href="mailto:pranetchiragt@gmail.com" class="font-semibold hover:opacity-70 transition-opacity">pranetchiragt@gmail.com</a>
+                <span class="opacity-70"> · </span>
+                <span>Open for EE Internships</span>
+            </p>
+            <blockquote class="text-base md:text-lg italic mb-10 opacity-70">
+                "The only limit to our realization of tomorrow is our doubts of today." – Franklin D. Roosevelt
+            </blockquote>
+            <p class="text-sm opacity-60">© 2026 Pranet Chirag Talati.</p>
+        </div>
+    </section>
+
+    <!-- Current Work Section -->
+    <section id="current" class="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative overflow-hidden">
+        <div class="max-w-3xl relative z-10">
+            <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-8 text-center">What's Next</h2>
+            <div class="space-y-6 text-lg md:text-xl leading-relaxed opacity-90">
+                <p>Currently working on coding a game for a hackathon in Toronto, making a robot for a club at TMU which I am a part of, joining the F-1 club at TMU in the electrical systems category and learning about aerospace applications of my studies—possibly constructing a satellite.</p>
+                <p class="font-semibold text-center">More to come.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        // Dark Mode Toggle Functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        const html = document.documentElement;
+        const body = document.body;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply theme on page load
+        if (currentTheme === 'dark') {
+            html.classList.add('dark');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+        } else {
+            html.classList.remove('dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        }
+
+        // Toggle theme on button click
+        darkModeToggle.addEventListener('click', () => {
+            const isDark = html.classList.contains('dark');
+            
+            if (isDark) {
+                // Switch to light mode
+                html.classList.remove('dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                localStorage.setItem('theme', 'light');
+            } else {
+                // Switch to dark mode
+                html.classList.add('dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Radial gradient spotlight – follow cursor, behind content
+        const spotlight = document.getElementById('spotlight');
+        if (spotlight) {
+            function updateSpotlight(e) {
+                spotlight.style.left = e.clientX + 'px';
+                spotlight.style.top = e.clientY + 'px';
+                spotlight.classList.add('visible');
+            }
+            function hideSpotlight() {
+                spotlight.classList.remove('visible');
+            }
+            document.addEventListener('mousemove', updateSpotlight);
+            document.addEventListener('mouseleave', hideSpotlight);
+        }
+    </script>
+</body>
+</html>
